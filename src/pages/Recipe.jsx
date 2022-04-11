@@ -75,7 +75,7 @@ const DetailWrapper = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   padding: 1rem 2rem;
   color: #313131;
   background: white;
