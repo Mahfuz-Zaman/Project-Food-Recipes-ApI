@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import { Link } from "react-router-dom";
 function Popular() {
   const [popular, setPopular] = useState([]);
 
@@ -19,7 +20,7 @@ function Popular() {
       );
 
       const data = await api.json();
-localStorage.setItem('popular',JSON.stringify(data.recipes));
+      localStorage.setItem("popular", JSON.stringify(data.recipes));
       setPopular(data.recipes);
     }
   };
@@ -40,10 +41,12 @@ localStorage.setItem('popular',JSON.stringify(data.recipes));
             return (
               <SplideSlide>
                 <Card>
-                  <div key={recipe.id}>
-                    <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
-                  </div>
+                  <Link to={"/recipe/" + recipe.id}>
+                    <div key={recipe.id}>
+                      <p>{recipe.title}</p>
+                      <img src={recipe.image} alt={recipe.title} />
+                    </div>
+                  </Link>
                 </Card>
               </SplideSlide>
             );
